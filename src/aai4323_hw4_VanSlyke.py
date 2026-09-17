@@ -52,7 +52,7 @@ def get_zipcodes(geolocator):
     # THE FUNCTION get_zipcode_from_coordinates TO EACH ROW IN THE DATAFRAME.  YOU WILL NEED TO PASS THE geolocator
     # OBJECT TO THE FUNCTION AS WELL.  HINT: USE A LAMBDA FUNCTION INSIDE THE APPLY FUNCTION.
     # START YOUR CODE HERE
-
+    df['zipcode'] = df.apply(lambda row: get_zipcode_from_coordinates(row, geocode), axis=1)
     # END YOUR CODE HERE
     
     # Look at your dataframe
@@ -89,7 +89,7 @@ def get_covid_fracs(df):
     # IT SHOULD HAVE TWO COLUMNS, ONE CALLED 'age' AND THE OTHER THE SAME AS THE KEY IN THE customer_ages DICTIONARY.
     # HINT: USE THE pd.DataFrame() FUNCTION AND THE .ITEMS() METHOD OF THE DICTIONARY.
     # START YOUR CODE HERE
-
+    agedf = pd.DataFrame(list(customer_ages.items()), columns=['customer', 'age'])
     # END YOUR CODE HERE
 
 
@@ -97,7 +97,7 @@ def get_covid_fracs(df):
     # STORE THE RESULT IN A NEW DATAFRAME CALLED covid_fracs.
     # HINT: USE THE pd.MERGE() FUNCTION.
     # START YOUR CODE HERE
-
+    covid_fracs = pd.merge(df, agedf, on='customer', how='left')
     # END YOUR CODE HERE
     
     # Add a column to the dataframe equal to the COVID fraction of the population for the
@@ -125,7 +125,7 @@ def get_covid_probs(df):
     # THE NEW COLUMN IS EQUAL TO THE PRODUCT OF THE COLUMNS 'zipprob' AND 'covid_frac'.
     # HINT: YOU CAN DO THIS WITH A SINGLE LINE OF CODE.
     # START YOUR CODE HERE
-
+    df['covid_prob'] = df['zipprob'] * df['covid_frac']
     # END YOUR CODE HERE
     
     # Sum the COVID probabilities by customer
