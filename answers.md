@@ -109,20 +109,28 @@ Amy is 27, so I use the rates for residents under 50:
 
 $$
 \begin{aligned}
-\text{Weighted sum for Amy}
+P(\text{COVID} \mid \text{Amy})
 &= (0.62 \times 0.35) + (0.28 \times 0.25) + (0.20 \times 0.15) \\
 &= 0.217 + 0.070 + 0.030 \\
 &= 0.317 = 31.7\%
 \end{aligned}
 $$
 
-However, Amy's ZIP probabilities sum to:
+**Answer: 31.7%**
+
+Note: Amy's ZIP probabilities in the table sum to more than 1:
 
 $$
-0.62 + 0.28 + 0.20 = 1.10 \ne 1.00
+0.62 + 0.28 + 0.20 = 1.10
 $$
 
-Therefore, 31.7% is the arithmetic result from the supplied table, but it is not a justified probability estimate from a valid ZIP probability distribution. A definitive answer requires a corrected row. I have left the supplied values unchanged rather than assuming which entry is incorrect.
+so they are not a valid probability distribution as given. If her row is normalized so it sums to 1, the estimate becomes:
+
+$$
+\frac{0.317}{1.10} \approx 0.288 = 28.8\%
+$$
+
+I report 31.7% using the values as given, with 28.8% as the estimate after correcting for the table inconsistency.
 
 #### Bill
 
